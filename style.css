@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #141414;
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #8a8b8e;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, #9a9b9e, #7a7b7e);
+  background-blend-mode: multiply, normal;
+}
+
+/* Top bar: big at first, shrinks when you scroll */
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  color: #f5f1ec;
+  z-index: 10;
+  transition: all 0.4s ease;
+}
+
+.top-logo {
+  height: 160px;
+  transition: height 0.4s ease;
+}
+
+.top-name {
+  letter-spacing: 12px;
+  font-size: 26px;
+  margin-top: 12px;
+  transition: all 0.4s ease;
+  color:#d41f1f;
+}
+
+.top.scrolled {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 10px 24px;
+  background: rgba(14, 14, 14, 0.92);
+}
+
+.top.scrolled .top-logo {
+  height: 44px;
+}
+
+.top.scrolled .top-name {
+  letter-spacing: 6px;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+/* Hero: dark at the top, fades into the gray metal */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 340px 24px 100px;
+  color: #f5f1ec;
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 14, 14, 0.96) 0%,
+    rgba(22, 22, 22, 0.92) 75%,
+    rgba(14, 14, 14, 0) 100%
+  );
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+
+.btn {
+  background: #d41f1f;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 36px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.btn:hover {
+  background: #f03030;
+}
+
+.where {
+  margin-top: 16px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* Story section sits on the same metal surface */
+.story {
+  padding: 100px 24px 120px;
+  scroll-margin-top: 70px;
+}
+
+.story-inner {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.label {
+  color: #5c0808;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.story h2 {
+  font-size: 40px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 36px;
+}
+
+.story p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.top.scrolled .brand {
+  flex-direction: row;
+  gap: 12px;
+}
+
+.nav {
+  display: none;
+}
+
+.top.scrolled {
+  justify-content: space-between;
+}
+
+.top.scrolled .nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav a {
+  color: #f5f1ec;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 8px 18px;
+  border: 1px solid #d41f1f;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  background: #d41f1f;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .top.scrolled .top-name {
+    display: none;
+  }
+  .nav a {
+    padding: 6px 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+}
+.visit {
+  padding: 100px 24px 120px;
+  text-align: center;
+  color: #f5f1ec;
+  background: #0e0e0e;
+  scroll-margin-top: 70px;
+}
+
+.visit-inner {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.visit .label {
+  color: #d41f1f;
+}
+
+.visit h2 {
+  font-size: 36px;
+  font-weight: normal;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.visit p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.visit-links {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  color: #f5f1ec;
+  text-decoration: none;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 12px 28px;
+  border: 1px solid #d41f1f;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.pill:hover {
+  background: #d41f1f;
+  color: #fff;
+}
