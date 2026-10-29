@@ -1,62 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STONE MELT | Crafted to leave a mark</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d0d0d">
+<title>STONE MELT | Crafted to leave a mark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
 
- <header class="top" id="top">
-    <a href="#home" class="brand">
-      <img src="img/logo.png" alt="Stone Melt logo" class="top-logo">
-      <span class="top-name">STONE MELT</span>
-    </a>
-    <nav class="nav">
-      <a href="#home">Home</a>
-      <a href="#story">About Us</a>
-      <a href="#visit">Visit Us</a>
-    </nav>
+<!-- drawing parts used by the menu slides -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="clipTall"><path d="M45 30 L155 30 L142 270 Q100 284 58 270 Z"/></clipPath>
+    <clipPath id="clipCup"><path d="M40 130 L160 130 L148 205 Q100 225 52 205 Z"/></clipPath>
+  </defs>
+
+  <symbol id="tall" viewBox="0 0 200 300">
+    <g clip-path="url(#clipTall)">
+      <rect class="l1" x="0" y="190" width="200" height="110"/>
+      <rect class="l2" x="0" y="100" width="200" height="90"/>
+      <rect class="l3" x="0" y="30" width="200" height="70"/>
+      <rect class="ice" x="68" y="118" width="34" height="34" rx="6" transform="rotate(12 85 135)"/>
+      <rect class="ice" x="96" y="180" width="32" height="32" rx="6" transform="rotate(-10 112 196)"/>
+      <rect class="ice" x="72" y="226" width="30" height="30" rx="6" transform="rotate(8 87 241)"/>
+    </g>
+    <path class="o" d="M45 30 L155 30 L142 270 Q100 284 58 270 Z"/>
+    <line x1="118" y1="6" x2="106" y2="238" stroke="#c4161c" stroke-width="7" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="cup" viewBox="0 0 200 300">
+    <g clip-path="url(#clipCup)">
+      <rect class="l1" x="30" y="130" width="140" height="100"/>
+      <rect class="l2" x="30" y="130" width="140" height="28"/>
+    </g>
+    <path class="o" d="M40 130 L160 130 L148 205 Q100 225 52 205 Z"/>
+    <path class="o" d="M160 142 C198 142 198 190 152 190"/>
+    <ellipse class="o" cx="100" cy="228" rx="72" ry="9"/>
+    <path class="o steamline" d="M80 108 C70 92 90 82 80 64"/>
+    <path class="o steamline" d="M115 108 C105 92 125 82 115 64"/>
+  </symbol>
+
+  <symbol id="croissant" viewBox="0 0 200 300">
+    <path class="l1 o" d="M25 200 C15 140 65 100 100 100 C135 100 185 140 175 200 C155 178 130 172 100 172 C70 172 45 178 25 200 Z"/>
+    <path class="o2" d="M68 112 Q76 150 60 180"/>
+    <path class="o2" d="M100 101 L100 172"/>
+    <path class="o2" d="M132 112 Q124 150 140 180"/>
+  </symbol>
+
+  <symbol id="cookie" viewBox="0 0 200 300">
+    <circle class="l1 o" cx="100" cy="150" r="70"/>
+    <ellipse class="l2" cx="75" cy="120" rx="11" ry="7"/>
+    <ellipse class="l2" cx="128" cy="128" rx="10" ry="7"/>
+    <ellipse class="l2" cx="100" cy="162" rx="11" ry="7"/>
+    <ellipse class="l2" cx="68" cy="178" rx="10" ry="7"/>
+    <ellipse class="l2" cx="132" cy="182" rx="11" ry="7"/>
+    <ellipse class="l2" cx="102" cy="108" rx="9" ry="6"/>
+  </symbol>
+</svg>
+
+<!-- background journey: plays behind the page while scrolling -->
+<div class="bg" id="bg" aria-hidden="true">
+
+  <!-- 1 plant grows -->
+  <svg class="scene" viewBox="0 0 400 400">
+    <g class="ln">
+      <path d="M120 350 L280 350"/>
+      <path class="stem" pathLength="1" d="M200 350 C200 290 188 240 200 150"/>
+      <g class="leaf lf1"><path d="M199 270 C160 270 135 245 130 225 C165 225 190 240 199 270 Z"/></g>
+      <g class="leaf lf2"><path d="M200 235 C240 235 265 210 270 190 C235 190 210 205 200 235 Z"/></g>
+      <g class="leaf lf3"><path d="M199 195 C165 195 145 175 142 158 C175 158 195 172 199 195 Z"/></g>
+    </g>
+    <g class="rd leaf lf2"><circle cx="222" cy="262" r="9"/><circle cx="178" cy="300" r="9"/><circle cx="214" cy="186" r="9"/></g>
+  </svg>
+
+  <!-- 2 cherries fall into the basket -->
+  <svg class="scene" viewBox="0 0 400 400">
+    <path class="ln" d="M100 40 Q200 20 300 40"/>
+    <g class="rd">
+      <circle class="fall" style="--d:230" cx="150" cy="60" r="10"/>
+      <circle class="fall" style="--d:268" cx="185" cy="22" r="10"/>
+      <circle class="fall" style="--d:215" cx="215" cy="75" r="10"/>
+      <circle class="fall" style="--d:182" cx="245" cy="108" r="10"/>
+      <circle class="fall" style="--d:240" cx="268" cy="50" r="10"/>
+    </g>
+    <g class="ln">
+      <path d="M110 300 L290 300 L270 370 L130 370 Z"/>
+      <path d="M125 300 C125 250 275 250 275 300"/>
+      <path d="M118 335 L282 335"/>
+    </g>
+  </svg>
+
+  <!-- 3 cherry splits open -->
+  <svg class="scene" viewBox="0 0 400 400">
+    <g class="ln">
+      <ellipse cx="200" cy="200" rx="26" ry="40"/>
+      <path d="M200 162 C190 185 210 215 200 238"/>
+    </g>
+    <path class="rd hl" d="M200 125 A75 75 0 0 0 200 275 Z"/>
+    <path class="rd hr" d="M200 125 A75 75 0 0 1 200 275 Z"/>
+  </svg>
+
+  <!-- 4 roasting -->
+  <svg class="scene" viewBox="0 0 400 400">
+    <g class="ln">
+      <circle cx="200" cy="180" r="85"/>
+      <path d="M130 270 L270 270"/>
+      <path d="M150 268 L140 340"/>
+      <path d="M250 268 L260 340"/>
+      <g class="spin">
+        <path d="M200 95 L200 265"/>
+        <path d="M115 180 L285 180"/>
+        <path d="M140 120 L260 240"/>
+        <path d="M260 120 L140 240"/>
+        <ellipse class="bn" cx="200" cy="130" rx="15" ry="9"/>
+        <ellipse class="bn dk" cx="200" cy="130" rx="15" ry="9"/>
+        <ellipse class="bn" cx="158" cy="205" rx="15" ry="9"/>
+        <ellipse class="bn dk" cx="158" cy="205" rx="15" ry="9"/>
+        <ellipse class="bn" cx="244" cy="208" rx="15" ry="9"/>
+        <ellipse class="bn dk" cx="244" cy="208" rx="15" ry="9"/>
+      </g>
+    </g>
+    <g class="rd flame">
+      <path d="M178 345 C166 322 186 316 180 296 C200 310 206 326 196 345 Z"/>
+      <path d="M208 345 C198 326 214 320 210 302 C228 314 232 330 222 345 Z"/>
+    </g>
+  </svg>
+
+  <!-- 5 grinding -->
+  <svg class="scene" viewBox="0 0 400 400">
+    <g class="ln">
+      <path d="M140 90 L260 90 L235 170 L165 170 Z"/>
+      <rect x="150" y="170" width="100" height="110"/>
+      <rect x="160" y="280" width="80" height="50"/>
+      <g class="crank">
+        <path d="M250 225 L300 225"/>
+        <circle cx="304" cy="225" r="8"/>
+      </g>
+    </g>
+    <g class="beans-out">
+      <ellipse class="bnw" cx="185" cy="120" rx="13" ry="8"/>
+      <ellipse class="bnw" cx="215" cy="125" rx="13" ry="8"/>
+      <ellipse class="bnw" cx="200" cy="148" rx="13" ry="8"/>
+    </g>
+    <path class="pile" d="M150 345 Q200 300 250 345 Z"/>
+  </svg>
+
+  <!-- 6 espresso pours into the cup -->
+  <svg class="scene" viewBox="0 0 400 400">
+    <g clip-path="url(#clipPour)">
+      <g class="liquid">
+        <rect x="130" y="232" width="140" height="95" fill="#7a4524"/>
+        <rect x="130" y="232" width="140" height="7" fill="#c98a4b"/>
+      </g>
+    </g>
+    <defs><clipPath id="clipPour"><path d="M140 230 L260 230 L248 305 Q200 325 152 305 Z"/></clipPath></defs>
+    <g class="ln">
+      <rect x="170" y="118" width="60" height="22" rx="5"/>
+      <path d="M140 230 L260 230 L248 305 Q200 325 152 305 Z"/>
+      <path d="M260 242 C298 242 298 292 252 292"/>
+      <ellipse cx="200" cy="330" rx="72" ry="9"/>
+      <path class="steam" d="M165 215 C155 198 175 188 165 168"/>
+      <path class="steam" d="M235 215 C225 198 245 188 235 168"/>
+    </g>
+    <line class="stream" x1="200" y1="146" x2="200" y2="315" stroke="#c98a4b" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<!-- top bar, logo and links -->
+<div class="bar" id="bar"></div>
+
+<a class="brand" id="brand" href="#top" aria-label="STONE MELT, back to top">
+  <img class="brand-logo" src="img/logo.png" alt="STONE MELT logo">
+  <span class="brand-name">STONE MELT</span>
+</a>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <a href="#top">Home</a>
+  <a href="#story">About us</a>
+  <a href="#menu">Menu</a>
+  <a href="#visit">Visit</a>
+</nav>
+
+<main>
+  <!-- hero: only the logo (fixed above), the slogan and the city -->
+  <header class="hero">
+    <h1 class="hero-slogan">Crafted to leave a mark</h1>
+    <p class="hero-place">Visakhapatnam</p>
   </header>
 
-  <section class="hero" " id="home">
-    <h1>Crafted to leave a mark</h1>
-    <a href="#story" class="btn">Our Story</a>
-    <p class="where">Visakhapatnam</p>
-  </section>
-
-  <section class="story" id="story">
-    <div class="story-inner">
-      <p class="label">The Story</p>
-      <h2>Stone doesn’t melt.<br>Until it does.</h2>
-      <p>In the old myth, Medusa turned anyone who met her gaze into stone. Hard. Silent. Unmoving.</p>
-      <p>We took that idea and turned it around. Stone Melt is the moment the hardness softens. The rush slows down, and the day finally lets go.</p>
-      <p>That is the mark we want to leave on you.</p>
+  <section class="sec" id="story">
+    <div class="wrap">
+      <h2>Stone doesn't melt. Until it does.</h2>
+      <p>In the old story, one look from Medusa turned everything to stone. STON MELT is about the opposite moment: the pause when something hard softens.</p>
+      <p>Real brewed coffee, made by hand, in drinks you have not seen before. Crafted to leave a mark.</p>
     </div>
   </section>
 
-  <script>
-    var bar = document.getElementById("top");
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 80) {
-        bar.classList.add("scrolled");
-      } else {
-        bar.classList.remove("scrolled");
-      }
-    });
-  </script>
+  <section class="sec" id="space">
+    <div class="wrap">
+      <h2>The space</h2>
+      <p>A clean, aesthetic store inside Central Mall, Visakhapatnam. Metal, black and a little red, built around the coffee.</p>
+    </div>
+  </section>
 
-</body>
-</html>
- <section class="visit" id="visit">
-    <div class="visit-inner">
-      <p class="label">Visit Us</p>
-      <h2>Opening soon in Visakhapatnam</h2>
-      <p>Follow us on Instagram to see the moment it happens.</p>
-      <div class="visit-links">
-        <a href="https://www.instagram.com/stone.melt/" class="pill" target="_blank">Instagram</a>
-        <a href="mailto:stoneemelt@gmail.com" class="pill">Email Us</a>
+  <section class="sec" id="menu">
+    <div class="wrap">
+      <h2>The menu</h2>
+      <div class="tabs" id="tabs">
+        <button type="button" data-cat="matcha">Matcha</button>
+        <button type="button" data-cat="butterfly">Butterfly Pea</button>
+        <button type="button" data-cat="espresso">Espressos</button>
+        <button type="button" data-cat="mocktail">Mocktails</button>
+        <button type="button" data-cat="baked">Baked</button>
+      </div>
+
+      <div class="deck" id="deck">
+        <!-- Matcha -->
+        <article class="slide" data-cat="matcha" style="--c1:#6f9a3a;--c2:#b5cf7a;--c3:#f4f1ea">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Matcha</p><h3>Coconut Cloud</h3>
+        </article>
+        <article class="slide" data-cat="matcha" style="--c1:#efe9de;--c2:#7fa043;--c3:#3a2113">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Matcha</p><h3>Dirty Matcha</h3>
+        </article>
+        <article class="slide" data-cat="matcha" style="--c1:#7fa043;--c2:#e8dfcf;--c3:#3a2113">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Matcha</p><h3>Matcha Espresso Latte</h3>
+        </article>
+
+        <!-- Butterfly Pea -->
+        <article class="slide" data-cat="butterfly" style="--c1:#4b5bd6;--c2:#8a63d2;--c3:#2b160c">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Butterfly Pea</p><h3>Butterfly Espresso Tonic</h3>
+        </article>
+        <article class="slide" data-cat="butterfly" style="--c1:#5a4fcf;--c2:#8fb34a;--c3:#f1ece0">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Butterfly Pea</p><h3>Butterfly Matcha Fusion</h3>
+        </article>
+        <article class="slide" data-cat="butterfly" style="--c1:#3b4bc2;--c2:#7a4fc0;--c3:#2b160c">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Butterfly Pea</p><h3>Butterfly Espresso</h3>
+        </article>
+
+        <!-- Espressos -->
+        <article class="slide" data-cat="espresso" style="--c1:#e9eef0;--c2:#c88a4a;--c3:#2b160c">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Espressos</p><h3>Espresso Tonic</h3>
+        </article>
+        <article class="slide" data-cat="espresso" style="--c1:#3a2113;--c2:#5a3319;--c3:#7b4a26">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Espressos</p><h3>Americano</h3>
+        </article>
+        <article class="slide" data-cat="espresso" style="--c1:#efe6d6;--c2:#b98652;--c3:#6b3d1f">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Espressos</p><h3>Iced Latte</h3>
+        </article>
+        <article class="slide" data-cat="espresso" style="--c1:#4a2a1a;--c2:#8a5a35;--c3:#f1ece0">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Espressos</p><h3>Mocha Espresso</h3>
+        </article>
+        <article class="slide" data-cat="espresso" style="--c1:#3a2113;--c2:#3a2113">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#cup"/></svg>
+          <p class="cat">Espressos</p><h3>V60 Pour Over</h3>
+        </article>
+        <article class="slide" data-cat="espresso" style="--c1:#8a5a35;--c2:#f3ede2">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#cup"/></svg>
+          <p class="cat">Espressos</p><h3>Cappuccino</h3>
+        </article>
+        <article class="slide" data-cat="espresso" style="--c1:#b98652;--c2:#f3ede2">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#cup"/></svg>
+          <p class="cat">Espressos</p><h3>Latte</h3>
+        </article>
+
+        <!-- Mocktails -->
+        <article class="slide" data-cat="mocktail" style="--c1:#f4eddc;--c2:#f2b01e;--c3:#2b160c">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Mocktails</p><h3>Bumblebee Coconut Espresso Cooler</h3>
+        </article>
+        <article class="slide" data-cat="mocktail" style="--c1:#8c5fc4;--c2:#cdb8ea;--c3:#7fa043">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#tall"/></svg>
+          <p class="cat">Mocktails</p><h3>Ube Matcha</h3>
+        </article>
+
+        <!-- Baked -->
+        <article class="slide" data-cat="baked" style="--c1:#d99a45;--c2:#a8661a">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#croissant"/></svg>
+          <p class="cat">Baked</p><h3>Croissant</h3>
+        </article>
+        <article class="slide" data-cat="baked" style="--c1:#c68a4b;--c2:#3a2113">
+          <svg class="art" viewBox="0 0 200 300" aria-hidden="true"><use href="#cookie"/></svg>
+          <p class="cat">Baked</p><h3>Cookies</h3>
+        </article>
+      </div>
+
+      <div class="deck-ctrl">
+        <button type="button" class="arrow" id="prev" aria-label="Previous drink">&larr;</button>
+        <span class="count" id="count">1 / 17</span>
+        <button type="button" class="arrow" id="next" aria-label="Next drink">&rarr;</button>
       </div>
     </div>
   </section>
+
+  <section class="sec last" id="visit">
+    <div class="wrap">
+      <h2>Visit us</h2>
+      <p>Follow along for the opening and everything before it.</p>
+      <p>
+        <a class="pill big" href="https://instagram.com/stone.melt" target="_blank" rel="noopener">Instagram @stone.melt</a>
+      </p>
+      <p>
+        <a class="text-link" href="mailto:stoneemelt@gmail.com">stoneemelt@gmail.com</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">&copy; STON MELT, Visakhapatnam</footer>
+
+<div class="sticky">
+  <a class="pill ghost" href="#menu">Menu</a>
+  <a class="pill" href="https://www.google.com/maps/search/?api=1&query=Central+Mall+Visakhapatnam" target="_blank" rel="noopener">Directions</a>
+</div>
+
+<script>
+(function () {
+  var brand = document.getElementById('brand');
+  var nav = document.getElementById('nav');
+  var bar = document.getElementById('bar');
+  var scenes = document.querySelectorAll('.scene');
+  var N = scenes.length;
+  var ticking = false;
+
+  function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+
+  function update() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    var small = y > 40;
+    brand.classList.toggle('small', small);
+    nav.classList.toggle('show', small);
+    bar.classList.toggle('show', small);
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var t = max > 0 ? clamp(y / max, 0, 1) : 0;
+    var f = t * N;
+
+    for (var i = 0; i < N; i++) {
+      var raw = f - i;
+      var p = clamp(raw, 0, 1);
+      var o;
+      if (i === N - 1) {
+        o = raw > 0 ? Math.min(1, raw * 6) : 0;
+      } else {
+        o = (raw <= 0 || raw >= 1) ? 0 : Math.min(1, raw * 6, (1 - raw) * 6);
+      }
+      scenes[i].style.setProperty('--p', p.toFixed(3));
+      scenes[i].style.opacity = o.toFixed(3);
+    }
+  }
+
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', update);
+  update();
+
+  /* ---- menu slides ---- */
+  var deck = document.getElementById('deck');
+  var slides = deck.querySelectorAll('.slide');
+  var tabs = document.querySelectorAll('#tabs button');
+  var count = document.getElementById('count');
+
+  function current() {
+    return clamp(Math.round(deck.scrollLeft / deck.clientWidth), 0, slides.length - 1);
+  }
+  function refresh() {
+    var i = current();
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    var cat = slides[i].getAttribute('data-cat');
+    for (var k = 0; k < tabs.length; k++) {
+      tabs[k].classList.toggle('on', tabs[k].getAttribute('data-cat') === cat);
+    }
+  }
+  deck.addEventListener('scroll', function () { requestAnimationFrame(refresh); }, { passive: true });
+
+  document.getElementById('prev').addEventListener('click', function () {
+    deck.scrollTo({ left: (current() - 1) * deck.clientWidth, behavior: 'smooth' });
+  });
+  document.getElementById('next').addEventListener('click', function () {
+    deck.scrollTo({ left: (current() + 1) * deck.clientWidth, behavior: 'smooth' });
+  });
+
+  for (var k = 0; k < tabs.length; k++) {
+    tabs[k].addEventListener('click', function () {
+      var cat = this.getAttribute('data-cat');
+      for (var j = 0; j < slides.length; j++) {
+        if (slides[j].getAttribute('data-cat') === cat) {
+          deck.scrollTo({ left: j * deck.clientWidth, behavior: 'smooth' });
+          break;
+        }
+      }
+    });
+  }
+  window.addEventListener('resize', refresh);
+  refresh();
+})();
+</script>
+</body>
+</html>
